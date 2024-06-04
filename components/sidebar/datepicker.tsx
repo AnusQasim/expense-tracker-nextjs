@@ -12,12 +12,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useSidebar } from "@/hooks/use-sidebar";
 
-interface DatePickerProps {
-  isExpanded: boolean;
-}
-
-export const DatePicker = ({ isExpanded }: DatePickerProps) => {
+export const DatePicker = () => {
+  const { isOpen } = useSidebar();
   const [date, setDate] = useState<Date>();
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
@@ -46,11 +44,11 @@ export const DatePicker = ({ isExpanded }: DatePickerProps) => {
               marginBottom: 0,
             }}
             animate={{
-              scale: isExpanded ? 1 : 0,
-              opacity: isExpanded ? 1 : 0,
-              width: isExpanded ? "100%" : 0,
-              height: isExpanded ? 128 : 0,
-              marginBottom: isExpanded ? 32 : 0,
+              scale: isOpen ? 1 : 0,
+              opacity: isOpen ? 1 : 0,
+              width: isOpen ? "100%" : 0,
+              height: isOpen ? 128 : 0,
+              marginBottom: isOpen ? 32 : 0,
             }}
             transition={{ ease: "easeInOut" }}
           >
